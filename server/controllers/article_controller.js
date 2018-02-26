@@ -112,7 +112,7 @@ export async function delArticle (ctx) {
 
 // 更新文章
 export async function updateArticle (ctx) {
-    const id = ctx.request.body._id;
+    const id = ctx.request.body.id;
     const article = await Article.findByIdAndUpdate(id, {$set: ctx.request.body}).catch(err => {
         if (err.name == 400) {
             ctx.body = {
@@ -125,7 +125,7 @@ export async function updateArticle (ctx) {
             ctx.body = {
                 resCode: 500,
                 resDesc: '服务器内部错误',
-                dataList: res,
+                dataList: [],
                 data: {}
             };
         }
