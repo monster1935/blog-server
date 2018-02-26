@@ -79,8 +79,7 @@ export async function delLink (ctx) {
 
 // 更新友链
 export async function editLink (ctx) {
-    const id = ctx.request.body._id;
-
+    const id = ctx.request.body.id;
     if (id) {
         const link = await Link.findByIdAndUpdate(id, { $set: ctx.request.body}).catch(err => {
             if (err.name === 'CastError') {
